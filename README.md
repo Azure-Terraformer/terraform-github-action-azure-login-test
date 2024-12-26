@@ -1,3 +1,7 @@
+This Terraform module automates the creation of a GitHub Actions workflow YAML file within a specified repository and branch to perform a simple Azure OpenID Connect (OIDC) authentication test. By defining the repository, target branch, and commit user details, the module ensures that the workflow is correctly configured and committed to the correct repository and branch with the appropriate GitHub identity. 
+
+As part of the GitHub AT-AT framework, this module provides a simple health check for the GitHub AT-AT to verify that the Azure OIDC authentication is working.
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
