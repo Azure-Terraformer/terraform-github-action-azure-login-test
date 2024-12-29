@@ -2,6 +2,37 @@ This Terraform module automates the creation of a GitHub Actions workflow YAML f
 
 As part of the GitHub AT-AT framework, this module provides a simple health check for the GitHub AT-AT to verify that the Azure OIDC authentication is working.
 
+
+## Run the Tests
+
+There are Terraform Tests included in this repository. In order to run them you need to setup a `.debug.tfvars` file that includes your GitHub user account's name and email address.
+
+```
+github_username = "Your Name"
+github_email    = "you@me.com"
+```
+
+You need to login to GitHub using the GitHub CLI.
+
+```
+gh auth login
+```
+
+However, you're not done yet, you need to explicitly allow yourself to delete GitHub repositories.
+
+```
+gh auth refresh -h github.com -s delete_repo
+```
+
+After that you can run the tests by executing the following from the root folder.
+
+```
+terraform init
+terraform test -var-file="./tests/.debug.tfvars" -verbose
+```
+
+This will execute the `baseline.tftest.hcl`. The setup module creates a new GitHub repository and branch that this module will deploy it's source code files into.
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
